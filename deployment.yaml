@@ -22,4 +22,11 @@ spec:
         resources:
           limits:
             memory: "128Mi" #128 MB
-            cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)
+            cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu
+        volumeMounts:
+        - mountPath: /data
+          name: fast50g
+      volumes:
+        - name: fast50g
+          persistentVolumeClaim:
+            claimName: pv-practice
