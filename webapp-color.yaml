@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-08-01T12:03:27Z"
+  labels:
+    run: webapp-color
+  name: webapp-color
+  namespace: default
+  resourceVersion: "29735054"
+  uid: 8a648dd7-99c6-47f8-bbb1-a638bb81a140
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: webapp-color
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-79fn8
+      readOnly: true
+    env:
+    - name: APP_COLOR
+      value: green
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gke-cluster-1-default-pool-79d506dd-c9qy
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-79fn8
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-08-01T12:03:27Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-08-01T12:03:34Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-08-01T12:03:34Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-08-01T12:03:27Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://05525e7341a09e3c735e20bf16e855a39e0e49b0513dd5b10a561cd78dd44d5c
+    image: docker.io/library/nginx:latest
+    imageID: docker.io/library/nginx@sha256:bd06dfe1f8f7758debd49d3876023992d41842fd8921565aed315a678a309982
+    lastState: {}
+    name: webapp-color
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-08-01T12:03:33Z"
+  hostIP: 10.128.0.9
+  phase: Running
+  podIP: 10.4.1.9
+  podIPs:
+  - ip: 10.4.1.9
+  qosClass: BestEffort
+  startTime: "2022-08-01T12:03:27Z"
