@@ -1,1 +1,17 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-test
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      colour: green
+  template:
+    metadata:
+      labels:
+        colour: green
+    spec:
+      containers:
+        - name: container1
+          image: nginx
