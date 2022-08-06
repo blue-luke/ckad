@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: service-test
 spec:
+  type: ClusterIP
   selector:
     colour: green
   ports:

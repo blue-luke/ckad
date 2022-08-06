@@ -15,3 +15,5 @@ spec:
       containers:
         - name: container1
           image: nginx
+          securityContext:
+            runAsNonRoot: false
