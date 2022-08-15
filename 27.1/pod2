@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  containers:
+  - name: c1
+    image: nginx
+    securityContext:
+      runAsUser: 0 #putting this as anything other than 0 throws an error: [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+      runAsGroup: 0 #Can put this as 0 or 1000, 2000, 3000, etc, with no error

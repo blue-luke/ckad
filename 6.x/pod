@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+spec:
+  containers:
+  - image: nginx
+    name: c1
+    volumeMounts:
+    - mountPath: /bananas
+      name: volume
+    env:
+    - name: MESSAGE
+      value: "hello world"
+    command: ["/bin/echo"]
+    args: ["$(MESSAGE)"]
+  restartPolicy: OnFailure
+  volumes:
+  - name: volume
+    emptyDir: {}

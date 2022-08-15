@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      fruit: orange
+      status: stable
+  template:
+    metadata:
+      labels:
+        fruit: orange
+        status: stable
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
