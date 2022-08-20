@@ -1,0 +1,12 @@
+I used the prebuilt deployment and service
+
+kubectl create deployment demo --image=httpd --port=80
+kubectl expose deployment demo
+
+Deployment:
+Label is app: demo
+Port is 80
+
+Service:
+As above
+It has a clusterip, but I think I can ignore that and target the service based on its label

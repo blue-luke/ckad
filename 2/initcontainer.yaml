@@ -4,6 +4,7 @@ metadata:
   name: custom-name
   labels:
     app.kubernetes.io/name: MyApp
+  namespace: bananas
 spec:
   containers:
   - name: myapp-container

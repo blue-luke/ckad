@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: apple
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: apple
+  policyTypes:
+    - Ingress
+    - Egress
+  # ingress:
+  #   - {}
+  # egress:
+  #   - to:
+  #     - podSelector:
+  #         matchLabels:
+  #           app: banana
+  #     ports:
+  #       - port: 80

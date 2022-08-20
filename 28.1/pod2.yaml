@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: banana
+  template:
+    metadata:
+      labels:
+        app: banana
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80

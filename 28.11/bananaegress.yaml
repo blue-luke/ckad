@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: bananaegress
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: banana
+  policyTypes:
+    - Egress
+  egress:
+    - to: 
+        - ipBlock:
+            cidr: 8.8.4.0/24
